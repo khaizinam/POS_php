@@ -22,7 +22,7 @@
                                 <button id="btn-user"><img src="assets/img/rem.png" width="40px" alt=""></i> <?php echo $_SESSION['login'] ;?></button>
                                 <div id="user-Dropdown" class="user-dropdown-content">
                                  <a href="#">My Account</a>
-                                 <a href="admin/page.php">Manage/ Clerk</a>
+                                 <a href="admin/index.php">Manage/ Clerk</a>
                                  <a href="cart/index.php">My Cart</a>
                                  <a href="index.php?action=signout"><i class="fas fa-sign-out-alt"></i>Sign out</a>
                                </div>
