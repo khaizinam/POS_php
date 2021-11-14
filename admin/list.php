@@ -8,7 +8,7 @@
     }
 </style> 
 <a href="index.php">Về menu</a><br>
-<a href="page.php">Thêm hàng hóa vào danh sách</a>
+<a href="add.php">Thêm hàng hóa vào danh sách</a>
 <?php
     include('../config/config.php');
     //gọi danh sach cac hang hoa da dang ki

@@ -24,7 +24,7 @@
     ?> 
 <a href="index.php">Về menu</a><br>
 <a href="list.php">Danh sách các hàng hóa</a>
-     <form action="page.php" method="POST" enctype="multipart/form-data">
+     <form action="add.php" method="POST" enctype="multipart/form-data">
         <table border="1">
             <tr>
                 <td><span>Số lượng :</span></td>

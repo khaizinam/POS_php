@@ -24,7 +24,7 @@
 ?>
 <a href="index.php">về menu</a>
 <a href="list.php">Danh sách các hàng hóa</a>
-<a href="page.php">Thêm hàng hóa vào danh sách</a>
+<a href="add.php">Thêm hàng hóa vào danh sách</a>
  <form action="update.php?id_list=<?php echo $id_list?>" method="POST">
         <table border="1">
             <tr>
