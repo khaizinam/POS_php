@@ -1,3 +1,13 @@
+<?php
+    include('../config/config.php');
+    include('../classes/func.php');
+           
+    if(isset($_GET['opt_cart']) && $_GET['opt_cart']== 'cancel'){
+        $id_opt_cart = $_GET['id_cart_opt'];
+        $sql_delt = "DELETE FROM my_cart WHERE id_item='".$id_opt_cart ."' ";
+        mysqli_query($mysqli,$sql_delt);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,27 +30,16 @@
                 <!--  modal -->
                                 <div class="cart-wrapper d-flex">
                                     <div class="cart-body">
-                                        <p class="logo-cart"><i class="fas fa-shopping-cart"></i> Your cart</p>
-                                        <select name="dine" id="dine">
-                                            <option value="0">Dine in</option>
-                                            <option value="1">Order</option>
-                                        </select>
-                                        <!-- ==================Item-cart========= -->
-                                        <div class="cart-items">
-                                            <?php include('item_cart.php');?>
-                                            
-                                        </div>
-                                        <!-- =======================cart total=============== -->
-                                        
-                                    </div>
-                                    <div class="cart-pay">
-                                        <div class="wrapper-cart-total">
-                                            <span>Total : 500.000 vnd</span>
-                                        </div>
-                                        <button class="btn btn-pay" type="button">PAYMENT</button>
-                                    </div>
-                                </div>                                
-                                
+                                       
+                                            <!-- ==================Item-cart========= -->
+                                                <?php 
+                                                if(isset($_GET['cart_status']) && $_GET['cart_status']=='status'){
+                                                    include('item_stastus.php');
+                                                }else{
+                                                    include('item_cart.php');
+                                                }  
+                                                ?>  
+                                    </div>                                                                                   
         </div>
 </body>
 </html>

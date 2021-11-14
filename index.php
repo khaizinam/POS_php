@@ -2,7 +2,7 @@
 <?php
         session_start();
         if(isset($_SESSION['login'])){
-            include('inc/head.php');include('config/config.php') ;
+        include('inc/head.php');include('config/config.php') ;
         
 ?>
 <body>
@@ -11,8 +11,8 @@
         <!-- End header -->
             <div id="Item-menu" class="d-flex">             
                     <?php                           
-                        include("sidebar/side_bar_all.php");                               
-                        include("category/category.php");
+                        include("upload/side_bar_all.php");                               
+                        include("upload/category.php");
                     ?>                                  
             </div>     
          <!-- end content-->

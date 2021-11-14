@@ -28,7 +28,7 @@
                                </div>
                              </li>
                              <li> 
-                                <a href="cart/index.php" id="to-cart"><i class="fa fa-shopping-basket" ></i> My Cart</a>
+                                <a href="cart/index.php?status_cart=cart" id="to-cart"><i class="fa fa-shopping-basket" ></i> My Cart</a>
                              </li>
                         </ul>
                         <script src="assets/js/cart.js"></script>
@@ -37,12 +37,12 @@
                  <div class="main-menu-1">
                      <nav>
                          <ul id="main-menu" class="d-flex" >
-                             <li><a  href="index.php?cate=all">All</a></li>
-                             <li><a href="index.php?cate=combo">Combo</a></li>
-                             <li><a href="index.php?cate=cake">Cake</a></li>
-                             <li><a href="index.php?cate=milk_tea">Milk Tea</a></li>
-                             <li><a href="index.php?cate=fast_food">Fast Food</a></li>
-                             <li><a href="index.php?cate=juice">Juice</a></li>
+                             <li><a  href="index.php?cate=all">Tất cả danh mục</a></li>
+                             <li><a href="index.php?cate=main_food">Món ăn chính</a></li>
+                             <li><a href="index.php?cate=cake">Bánh ngọt</a></li>
+                             <li><a href="index.php?cate=drink">Thức uống</a></li>
+                             <li><a href="index.php?cate=KFC">KFC</a></li>
+                             <li><a href="index.php?cate=juice">Nước ép trái cây</a></li>
                          </ul>             
                      </nav>
                  </div>

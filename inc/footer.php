@@ -32,11 +32,3 @@
                 </div>
             </div>
             <!-- End footer -->
-            <div id="wp-copyright" class="container justify-content-between">
-                <p class="copyright">®Khaizinam Helionare Herp CO</p>
-                <ul id="footer-menu" class="d-flex">
-                    <li><a href="">Bảo mật</a></li>
-                    <li><a href="">Quảng cáo</a></li>
-                    <li><a href="">Liên hệ</a></li>
-                </ul>
-            </div>

@@ -1,15 +1,15 @@
 
 <?php
-   
+    $id_item_show =0;
     if(isset($_GET['cate'])){
         $get_type = $_GET['cate']; 
     }else{
         $get_type = 'all';
-   }
+   }//goi category hien thi san phamr trong main menu
     if($get_type == 'all'){
-        $sql_pro = "SELECT * FROM item_1  ORDER BY id ASC" ;
+        $sql_pro = "SELECT * FROM item_1 WHERE status='active' ORDER BY type ASC" ;
     }else{
-        $sql_pro = "SELECT * FROM item_1 WHERE type= '".$get_type."'  ORDER BY id ASC" ;
+        $sql_pro = "SELECT * FROM item_1 WHERE type= '".$get_type."' AND status='active'  ORDER BY name ASC" ;
     } 
     $query_pro = mysqli_query($mysqli, $sql_pro);
     if(isset($_GET['show_item']) && $_GET['show_item']==1){
@@ -26,9 +26,9 @@
     }  
 ?>
 <div class="wrapper">
-    <div class="feature-thumb">
+    <!-- <div class="feature-thumb">
         <img src="assets/img/post_5.jpg" alt="">
-    </div>
+    </div> -->
     <div class="products"> 
         <ul>
 <?php
@@ -44,7 +44,6 @@
                         <div class="price">
                             <span class="money"><?php echo number_format($row_pro['cost']) ; ?></span>
                         </div>
-                        <!-- <button class="btn btn-cart"  name="add_to_cart">Add to Cat</button> -->
                         <a class="btn btn-cart" href="index.php?id_sp=<?php echo number_format($row_pro['id']);?>&show_item=1">Add to cart</a>
                     </div>
                    
@@ -55,7 +54,7 @@
 ?>
         </ul>
     </div>
-    <div class="footer-thumb">
+    <!-- <div class="footer-thumb">
         <img src="assets/img/post_6.jpg" alt="">
-    </div>
+    </div> -->
 </div>   
