@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 11:23 AM
+-- Generation Time: Nov 14, 2021 at 05:03 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.30
 
@@ -47,8 +47,14 @@ CREATE TABLE `item_1` (
 --
 
 INSERT INTO `item_1` (`id`, `thu_tu`, `name`, `img`, `cost`, `status`, `details`, `HSD`, `NXS`, `Supply`, `type`, `category`) VALUES
-(1, 1, 'Flan Milk Tea', 'Flan Milk tea.jpg', 76000, 'kích hoạt', 'abccccccc', '2021-11-10', '2021-11-18', 'Khải', 'milk_tea', 'milk_tea'),
-(2, 2, 'Fruit Milk Tea', 'Fruit Milk Tea 1.jpg', 80000, 'kích hoạt', '', '2021-11-09', '2021-11-10', 'Khải', 'milk_tea', 'milk_tea');
+(4, 3, 'Coffee', 'coffee.jpg', 10000, 'active', '', '2021-11-09', '2021-11-10', 'Nhà NEST', 'drink', 'drink'),
+(125, 0, 'Bánh pavlova', 'banh-pavlova.jpg', 45000, 'active', '', '0000-00-00', '0000-00-00', '', 'main_food', 'main_food'),
+(126, 20, 'chè bông gòn', 'hot dog phô mai.png', 45000, 'active', '', '0000-00-00', '0000-00-00', '', 'main_food', 'main_food'),
+(127, 45, 'bánh cốm', 'banh-tao.jpg', 50000, 'active', '', '0000-00-00', '0000-00-00', '', 'cake', 'cake'),
+(130, 78, 'bánh gato', 'banh-tiramisu.jpg', 25000, 'active', '', '0000-00-00', '0000-00-00', '', 'cake', 'cake'),
+(131, 78, 'ComBO tứ tuyệt', 'comboA.jpg', 125000, 'active', '', '0000-00-00', '0000-00-00', '', 'main_food', 'main_food'),
+(132, 78, 'ComBo đôi', 'comboA.jpg', 0, 'active', '', '0000-00-00', '0000-00-00', '', 'main_food', 'main_food'),
+(133, 0, '', '', 0, 'active', '', '0000-00-00', '0000-00-00', '', 'main_food', 'main_food');
 
 -- --------------------------------------------------------
 
@@ -78,17 +84,11 @@ CREATE TABLE `my_cart` (
   `cost` int(30) NOT NULL,
   `amount` int(30) NOT NULL,
   `id_cart` int(30) NOT NULL,
-  `id_user` int(30) NOT NULL
+  `id_user` int(30) NOT NULL,
+  `user_name` varchar(200) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `pay` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `my_cart`
---
-
-INSERT INTO `my_cart` (`id_item`, `name`, `img`, `cost`, `amount`, `id_cart`, `id_user`) VALUES
-(1, 'Donut', 'banh-Donut.jpg', 28000, 5, 11001, 111),
-(2, 'Marcaron', 'banh-macaron.jpg', 26000, 7, 11001, 111),
-(4, 'Flan Milk Tea', 'Flan Milk tea.jpg', 76000, 7, 11001, 111);
 
 -- --------------------------------------------------------
 
@@ -117,6 +117,12 @@ INSERT INTO `username` (`id`, `username`, `password`, `name`, `email`) VALUES
 --
 
 --
+-- Indexes for table `item_1`
+--
+ALTER TABLE `item_1`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `item_menu`
 --
 ALTER TABLE `item_menu`
@@ -139,6 +145,12 @@ ALTER TABLE `username`
 --
 
 --
+-- AUTO_INCREMENT for table `item_1`
+--
+ALTER TABLE `item_1`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+
+--
 -- AUTO_INCREMENT for table `item_menu`
 --
 ALTER TABLE `item_menu`
@@ -148,7 +160,7 @@ ALTER TABLE `item_menu`
 -- AUTO_INCREMENT for table `my_cart`
 --
 ALTER TABLE `my_cart`
-  MODIFY `id_item` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_item` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `username`
