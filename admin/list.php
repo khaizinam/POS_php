@@ -1,14 +1,35 @@
 <style>
+
     table{
-        text-align: center;
-        padding: 10px;
+    /* border:1px solid black; */
+    width: 1350px;
+    border-collapse:collapse;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px;
     }
-    table tr td{
-        width: 120px;
+    tr{
+    border:1px solid black;
+}
+    td{
+    border:1px solid black;
+    }
+    .main-body{
+        width: 1080px;
+        height: 560px;
+        /* position: relative; */
+        margin: 0 auto;
+        overflow-x: scroll;
+        overflow-y: scroll;
+    }
+    .menu a{
+        display: inline-block;
+        padding :10px;
+        text-decoration: none;
+        color: black;
+        background-color: #eee;
     }
 </style> 
-<a href="index.php">Về menu</a><br>
-<a href="add.php">Thêm hàng hóa vào danh sách</a>
 <?php
     include('../config/config.php');
     //gọi danh sach cac hang hoa da dang ki
@@ -28,40 +49,47 @@
         $list_rows = mysqli_fetch_array( $query_list_update);
         header('location:update.php');
     }
-?>   
-    <table border="1"> 
-    <tr>
-                <td>ID</td>
-                <td>Tên sản phẩm</td>
-                <td>Hình ảnh</td>
-                <td>Giá tiền</td>
-                <td>Số lượng</td>
-                <td>Loại</td>
-                <td>Tình trạng hàng hóa</td>
-                <td class="detals">Mô tả</td>
-                <td>NSX</td>
-                <td>HSD</td>
-                <td>Nhà cung cấp</td>
-                <td>option</td>
+?>  
+<div class="menu">
+    <a href="index.php">Menu</a>
+    <a href="add.php">Thêm hàng hóa</a>
+</div>
+<hr>
+<div class="main-body">
+    <table > 
+    <tr style="background-color:skyblue">
+                <td style="width:60px">ID</td>
+                <td style="width:200px">Tên sản phẩm</td>
+                <td style="width:120px">Hình ảnh</td>
+                <td style="width:120px">Giá tiền</td>
+                <td style="width:100px">Số lượng</td>
+                <td style="width:100px">Loại</td>
+                <td style="width:100px">Tình trạng hàng hóa</td>
+                <td style="width:120px">Nhà cung cấp</td>
+                <td style="width:200px">option</td>
+                <td style="width:120px">NSX</td>
+                <td style="width:120px">HSD</td>
+                <td style="width:400px" class="detals">Mô tả</td>
             </tr>
        <?php              
         while($row_list = mysqli_fetch_array( $query_list)){
         ?>           
             <tr>
                 <td><?php echo $row_list['id']; ?></td>
-                <td><?php echo $row_list['name']; ?></td>
+                <td style="color:red;font-weight:bold"><?php echo $row_list['name']; ?></td>
                 <td><img src="../assets/img/<?php echo $row_list['img'];?>" width="100px"></td>
                 <td><?php echo number_format($row_list['cost']); ?></td>
                 <td><?php echo number_format($row_list['thu_tu']); ?></td>
                 <td><?php echo $row_list['type']; ?></td>
                 <td><?php echo $row_list['status']; ?></td>
-                <td><?php echo $row_list['details']; ?></td>
-                <td><?php echo $row_list['NXS']; ?></td>
-                <td><?php echo $row_list['HSD']; ?></td>
                 <td><?php echo $row_list['Supply']; ?></td>
                 <td><a href="list.php?&option_list=delete&id_list=<?php echo $row_list['id']; ?>">delete</a>
                 <a href="update.php?option_list=update&id_list=<?php echo $row_list['id'];?>">chỉnh sửa</a></td>
+                <td><?php echo $row_list['NXS']; ?></td>
+                <td><?php echo $row_list['HSD']; ?></td>
+                <td><?php echo $row_list['details']; ?></td>
             </tr>
         <?php }?>
     </table>
-
+</div>
+<hr>

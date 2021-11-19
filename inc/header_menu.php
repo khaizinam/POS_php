@@ -3,6 +3,13 @@
         unset($_SESSION['login']);
         header('location:upload/login.php');
     }
+    $id_item_show =0;
+    $_SESSION['category']='all';
+    if(isset($_GET['cate'])&&$_GET['cate']!=''){
+        $_SESSION['category'] = $_GET['cate']; 
+    }
+   $get_type=$_SESSION['category'];
+   $query_pro =  category($mysqli,$get_type);
 ?>
 <div id="header" >
             <div class="wr-header">
@@ -22,7 +29,7 @@
                                 <button id="btn-user"><img src="assets/img/rem.png" width="40px" alt=""></i> <?php echo $_SESSION['login'] ;?></button>
                                 <div id="user-Dropdown" class="user-dropdown-content">
                                  <a href="#">My Account</a>
-                                 <a href="admin/index.php">Manage/ Clerk</a>
+                                 <a href="admin/index.php">Quản lí</a>
                                  <a href="cart/index.php">My Cart</a>
                                  <a href="index.php?action=signout"><i class="fas fa-sign-out-alt"></i>Sign out</a>
                                </div>
@@ -37,7 +44,7 @@
                  <div class="main-menu-1">
                      <nav>
                          <ul id="main-menu" class="d-flex" >
-                             <li><a  href="index.php?cate=all">Tất cả danh mục</a></li>
+                             <li><a href="index.php?cate=all">Tất cả danh mục</a></li>
                              <li><a href="index.php?cate=main_food">Món ăn chính</a></li>
                              <li><a href="index.php?cate=cake">Bánh ngọt</a></li>
                              <li><a href="index.php?cate=drink">Thức uống</a></li>

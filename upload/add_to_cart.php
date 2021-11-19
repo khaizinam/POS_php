@@ -1,17 +1,19 @@
 <?php
-    include('classes/func.php');
+    // include('classes/func.php');
     // session_start();
+        $id_cart = get_id_cart($mysqli,'001');
+        $id_user = '001';
     if(isset($_POST['add'])){ 
         $name =$item_show['name']; 
         $img =$item_show['img']; 
         $cost =$item_show['cost']; 
         $amount = $_POST['amount'];
-        $id_cart = "11001";
-        $id_user = '001';
+        
         $user_name = 'Clak kenz';
-        $status = 'đang nấu';
+        $status = 'Chờ xử lí';
         $pay='0';
-        add_to_cart($mysqli, $id_item_show, $name, $img, $cost, $amount, $id_cart, $id_user,$user_name,$status,$pay);
+        $so_ban='25';
+        add_to_cart($mysqli, $id_item_show, $name, $img, $cost, $amount, $id_cart, $id_user,$user_name,$status,$pay,$so_ban);
     };  
 ?>
 <div class="menu-001">  
@@ -26,17 +28,13 @@
             <span class="ca-1002m"><?php echo number_format($item_show['cost']) ;?> vnd</span>
             <form action="index.php?id_sp=<?php echo $id_item_show;?>&show_item=1" method="POST">
                 <input class="input-00010" type="number" name="amount" value="0" min="1" max="20"><br>
-                <input class="input-00011" type="submit" name="add" value="OK">
+                <input class="input-00011" type="submit" name="add" value="Thêm vào giỏ">
             </form> 
             
         </div>
         <div class="ca-101">
             <p> Detail: <?php echo $item_show['details'] ; ?></p>
-            <p>From: <?php echo $item_show['Supply'] ; ?></p>
-            <p>NSX: <?php echo $item_show['NXS'] ; ?></p>
-            <p>HSD: <?php echo $item_show['HSD'] ; ?></p>
-            <p>Type: <?php echo $item_show['type'] ; ?></p>
-            <p>Note: <?php if(isset($_POST['add'])){echo 'Ban da them '.$_POST['amount'].' '.$item_show['name'].' vao gio hang.';}?></p>
+            <p>Note: <?php if(isset($_POST['add'])){echo 'Bạn đã thêm '.$_POST['amount'].' '.$item_show['name'].' vào giỏ hàng.';}?></p>
         </div>  
     </div>
 </div>

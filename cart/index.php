@@ -4,7 +4,8 @@
            
     if(isset($_GET['opt_cart']) && $_GET['opt_cart']== 'cancel'){
         $id_opt_cart = $_GET['id_cart_opt'];
-        $sql_delt = "DELETE FROM my_cart WHERE id_item='".$id_opt_cart ."' ";
+        $id_item_cart = $_GET['id_item'];
+        $sql_delt = "DELETE FROM my_cart WHERE id_item='".$id_item_cart ."' AND id_cart='".$id_opt_cart."' AND pay='0'";
         mysqli_query($mysqli,$sql_delt);
 }
 ?>

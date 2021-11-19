@@ -22,12 +22,45 @@
         header('location:list.php');
     };
 ?>
-<a href="index.php">về menu</a>
-<a href="list.php">Danh sách các hàng hóa</a>
-<a href="add.php">Thêm hàng hóa vào danh sách</a>
- <form action="update.php?id_list=<?php echo $id_list?>" method="POST">
-        <table border="1">
-            <tr>
+<style>
+table{
+    border-collapse:collapse;
+    background-color: #fff;
+    padding: 10px;
+}
+tr{
+    border:1px solid black;
+}
+td{
+    border:1px solid black;
+}
+.main-body{
+    width: 1080px;
+    height: 560px;
+    /* position: relative; */
+    margin: 0 auto;
+}
+.menu a{
+    display: inline-block;
+    padding :10px;
+    text-decoration: none;
+    color: black;
+    background-color: #eee;
+}
+input{
+        margin: 0px 5px 0px 5px;
+        width: 600px;
+        height: 40px;
+        padding: 10px;
+    }
+</style> 
+<div class="menu">
+    <a href="list.php">Quay về</a>
+</div><hr>
+<div class="main-body">
+  <form action="update.php?id_list=<?php echo $id_list?>" method="POST">
+        <table>
+            <tr >
                 <td><span>ID :</span></td>
                 <td><input type="text" name="id" value="<?php echo $list_rows['id']?>"></td>
             </tr>
@@ -63,7 +96,8 @@
                 <td><input type="date" name="NXS" value="<?php echo $list_rows['NXS']?>"></td>
             </tr>
             <tr>
-                <td>Nhà cung cấpd><input type="text" name="Supply" value="<?php echo $list_rows['Supply']?>"></td>
+                <td>Nhà cung cấp</td>
+                <td><input type="text" name="Supply" value="<?php echo $list_rows['Supply']?>"></td>
             </tr>
             <tr>
                 <td>Loại sản phẩm:</td>
@@ -92,4 +126,5 @@
         </table>
         <input type="submit" name="update" value="submit">
     </form>
+</div>
   

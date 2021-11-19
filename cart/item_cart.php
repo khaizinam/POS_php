@@ -9,9 +9,6 @@
         if(isset($_GET['payment']) && $_GET['payment']== 'pay'){
             $id_cart_get = $_GET['id_cart'];
             Thanh_toan($mysqli,$id_cart_get);
-            
-            $sql_cart_pay= "SELECT * FROM my_cart WHERE pay='1' AND id_user='1'" ;
-            $query_cart_pay = mysqli_query($mysqli, $cart_001);
             header('location:index.php');
         }      
  ?>
@@ -20,7 +17,7 @@
 <?php if($check_cart > 0) {?>
     <div class="cart-items">
         <table id="table-cart" border="1">
-            <tr class="bold upper-case row-1">
+            <tr style="background-color:skyblue" class="bold upper-case row-1">
                 <td></td>
                 <td>Tên</td>
                 <td>Giá</td>
@@ -35,7 +32,7 @@
                     <td> <?php echo number_format($cart_0011['cost']);?></td>
                     <td> <?php echo $cart_0011['amount'];?></td>
                     <td> <?php echo number_format($cart_0011['cost']*$cart_0011['amount']);?></td>
-                    <td> <a href="index.php?opt_cart=cancel&id_cart_opt=<?php echo $cart_0011['id_item'];?>">cancel</a></td>               
+                    <td> <a href="index.php?opt_cart=cancel&id_item=<?php echo $cart_0011['id_item'];?>&id_cart_opt=<?php echo $cart_0011['id_cart'];?>">cancel</a></td>               
                 </tr>
                 <?php 
                         $total += ($cart_0011['cost']*$cart_0011['amount']);
@@ -45,8 +42,8 @@
                 <tr>
                     <td>Bàn số : 25D</td>
                     <td>Nguyễn Văn A</td>      
-                    <td>Tổng giá</td>
-                    <td><?php echo number_format($total)?> vnd </td>
+                    <td style="background-color:skyblue">Tổng giá</td>
+                    <td style="background-color:skyblue"><?php echo number_format($total)?> vnd </td>
                     <td>ID giỏ hàng </td>
                     <td> <?php echo $id_gio_hang;?></td>
                 </tr>

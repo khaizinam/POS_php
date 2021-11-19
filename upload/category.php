@@ -1,17 +1,9 @@
 
 <?php
-    $id_item_show =0;
-    if(isset($_GET['cate'])){
-        $get_type = $_GET['cate']; 
-    }else{
-        $get_type = 'all';
-   }//goi category hien thi san phamr trong main menu
-    if($get_type == 'all'){
-        $sql_pro = "SELECT * FROM item_1 WHERE status='active' ORDER BY type ASC" ;
-    }else{
-        $sql_pro = "SELECT * FROM item_1 WHERE type= '".$get_type."' AND status='active'  ORDER BY name ASC" ;
-    } 
-    $query_pro = mysqli_query($mysqli, $sql_pro);
+
+//goi category hien thi san phamr trong main menu
+   
+   
     if(isset($_GET['show_item']) && $_GET['show_item']==1){
         $id_item_show = $_GET['id_sp'];
         $item_info = "SELECT * FROM item_1 WHERE id= '".$id_item_show."' LIMIT 1" ;

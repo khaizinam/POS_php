@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 14, 2021 at 05:03 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.30
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 14, 2021 lúc 06:50 AM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `account`
+-- Cơ sở dữ liệu: `account`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item_1`
+-- Cấu trúc bảng cho bảng `item_1`
 --
 
 CREATE TABLE `item_1` (
@@ -43,7 +43,7 @@ CREATE TABLE `item_1` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `item_1`
+-- Đang đổ dữ liệu cho bảng `item_1`
 --
 
 INSERT INTO `item_1` (`id`, `thu_tu`, `name`, `img`, `cost`, `status`, `details`, `HSD`, `NXS`, `Supply`, `type`, `category`) VALUES
@@ -88,7 +88,7 @@ INSERT INTO `item_1` (`id`, `thu_tu`, `name`, `img`, `cost`, `status`, `details`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item_menu`
+-- Cấu trúc bảng cho bảng `item_menu`
 --
 
 CREATE TABLE `item_menu` (
@@ -103,7 +103,7 @@ CREATE TABLE `item_menu` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `my_cart`
+-- Cấu trúc bảng cho bảng `my_cart`
 --
 
 CREATE TABLE `my_cart` (
@@ -119,10 +119,17 @@ CREATE TABLE `my_cart` (
   `pay` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Đang đổ dữ liệu cho bảng `my_cart`
+--
+
+INSERT INTO `my_cart` (`id_item`, `name`, `img`, `cost`, `amount`, `id_cart`, `id_user`, `user_name`, `status`, `pay`) VALUES
+(125, 'Palova cake', 'banh-pavlova.jpg', 33000, 2, 11001, 1, 'Clak kenz', 'đang nấu', 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `username`
+-- Cấu trúc bảng cho bảng `username`
 --
 
 CREATE TABLE `username` (
@@ -134,7 +141,7 @@ CREATE TABLE `username` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `username`
+-- Đang đổ dữ liệu cho bảng `username`
 --
 
 INSERT INTO `username` (`id`, `username`, `password`, `name`, `email`) VALUES
@@ -142,57 +149,57 @@ INSERT INTO `username` (`id`, `username`, `password`, `name`, `email`) VALUES
 (2, 'user1', '123', 'Nezuko Demii', '');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `item_1`
+-- Chỉ mục cho bảng `item_1`
 --
 ALTER TABLE `item_1`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `item_menu`
+-- Chỉ mục cho bảng `item_menu`
 --
 ALTER TABLE `item_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `my_cart`
+-- Chỉ mục cho bảng `my_cart`
 --
 ALTER TABLE `my_cart`
   ADD PRIMARY KEY (`id_item`);
 
 --
--- Indexes for table `username`
+-- Chỉ mục cho bảng `username`
 --
 ALTER TABLE `username`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `item_1`
+-- AUTO_INCREMENT cho bảng `item_1`
 --
 ALTER TABLE `item_1`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
--- AUTO_INCREMENT for table `item_menu`
+-- AUTO_INCREMENT cho bảng `item_menu`
 --
 ALTER TABLE `item_menu`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `my_cart`
+-- AUTO_INCREMENT cho bảng `my_cart`
 --
 ALTER TABLE `my_cart`
   MODIFY `id_item` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
--- AUTO_INCREMENT for table `username`
+-- AUTO_INCREMENT cho bảng `username`
 --
 ALTER TABLE `username`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;

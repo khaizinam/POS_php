@@ -331,8 +331,7 @@ ul#main-menu .focus {
     min-height: 400px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 20px 45px 20px 15px;
 
   }
   .cart-pay{
@@ -879,7 +878,7 @@ left: 525px;
   margin-bottom: 1px;
 }
 .input-00011{
-  position: relative;
+  /* position: relative; */
   margin-left: 15px;
   bottom: -55px;
   width: 100px;

@@ -2,7 +2,9 @@
 <?php
         session_start();
         if(isset($_SESSION['login'])){
-        include('inc/head.php');include('config/config.php') ;
+        include('inc/head.php');
+        include('config/config.php') ;
+        include('classes/func.php') ;
         
 ?>
 <body>
