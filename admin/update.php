@@ -56,7 +56,9 @@ input{
 </style> 
 <div class="menu">
     <a href="list.php">Quay về</a>
-</div><hr>
+</div>
+<h3>Chỉnh sửa hàng hóa</h3>
+<hr>
 <div class="main-body">
   <form action="update.php?id_list=<?php echo $id_list?>" method="POST">
         <table>

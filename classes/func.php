@@ -60,7 +60,7 @@
         return $query;
     } 
     function query_id_don_hang($mysqli){
-        $sql ="SELECT * FROM tbl_gio_hang WHERE NOT status='done' AND status!='not'";
+        $sql ="SELECT * FROM tbl_gio_hang WHERE NOT status='done' AND status!='not' ORDER BY id_cart DESC";
         $query=mysqli_query($mysqli,$sql);
         return $query;
     } 

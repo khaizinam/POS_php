@@ -54,6 +54,7 @@
     <a href="index.php">Menu</a>
     <a href="add.php">Thêm hàng hóa</a>
 </div>
+<h3>Danh sách hàng hóa trong kho</h3>
 <hr>
 <div class="main-body">
     <table > 

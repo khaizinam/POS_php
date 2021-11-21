@@ -4,8 +4,7 @@
         if(isset($_SESSION['login'])){
         include('inc/head.php');
         include('config/config.php') ;
-        include('classes/func.php') ;
-        
+        include('classes/func.php') ;       
 ?>
 <body>
     <div class="sys-wrapper">

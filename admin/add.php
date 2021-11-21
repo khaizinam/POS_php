@@ -26,19 +26,19 @@
     table{
         border-collapse:collapse;
         background-color: #fff;
-        padding: 10px;
+        
     }
     tr{
         height: 40px;
         border:1px solid black;
     }
     td{
-        
+        padding: 10px;
         border:1px solid black;
     }
     .main-body{
         width: 1080px;
-        height: 560px;
+        height: 1080px;
         /* position: relative; */
         margin: 20px auto;
     }
@@ -60,11 +60,19 @@
         height: 40px;
         padding: 10px;
     }
+   select{
+        margin: 0px 5px 0px 5px;
+        width: 200px;
+        height: 40px;
+        padding: 10px;
+    }
 </style> 
     <div class="menu">
         <a href="index.php">Menu</a>
         <a href="list.php">Danh sách các hàng hóa</a>
-    </div><hr>
+    </div>
+    <h3>Thêm hàng hóa</h3>
+    <hr>
     <div class="main-body">
         <form action="add.php" method="POST" enctype="multipart/form-data">
             <table>

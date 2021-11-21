@@ -40,6 +40,8 @@
         <div class="menu">
             <a href="index.php">Menu</a>
         </div>
+        <h3>Quản lí đơn hàng</h3>
+        <hr>
 
 <?php
         include('../config/config.php');
@@ -111,7 +113,6 @@
            
         }
         ?>
-<hr>
 <!-- in danh sách các đơn hang -->
 <div class="main-body">
 <?php while($row_don_hang_1 = mysqli_fetch_array($query_id_gio_hang)){

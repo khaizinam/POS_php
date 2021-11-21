@@ -41,7 +41,7 @@
                 } ?>
                 <tr>
                     <td>Bàn số : 25D</td>
-                    <td>Nguyễn Văn A</td>      
+                    <td>ClarkKenz</td>      
                     <td style="background-color:skyblue">Tổng giá</td>
                     <td style="background-color:skyblue"><?php echo number_format($total)?> vnd </td>
                     <td>ID giỏ hàng </td>

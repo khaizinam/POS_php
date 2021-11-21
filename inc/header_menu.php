@@ -3,8 +3,10 @@
         unset($_SESSION['login']);
         header('location:upload/login.php');
     }
+    if(!isset( $_SESSION['category'])&& $_SESSION['category']!=''){
+        $_SESSION['category']='all';
+    }
     $id_item_show =0;
-    $_SESSION['category']='all';
     if(isset($_GET['cate'])&&$_GET['cate']!=''){
         $_SESSION['category'] = $_GET['cate']; 
     }
