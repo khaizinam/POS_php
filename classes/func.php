@@ -133,5 +133,15 @@
         $query = mysqli_query($mysqli, $sql);
         return $query;
     }
-
+    function delete_cart($mysqli,$id_item,$id_cart){
+        $sql = "DELETE FROM my_cart WHERE id_item='".$id_item."' AND id_cart='".$id_cart."' AND pay='0'";
+        mysqli_query($mysqli,$sql);
+    }
+    function session_set($key,$value){
+            $_SESSION[$key]=$value;
+    }
+    function add_item($mysqli, $id,$thu_tu,$name,$cost,$status,$details,$HSD, $NXS,$Supply,$type,$category,$id_list ){
+        $sql = "UPDATE item_1 SET id='".$id."', thu_tu='".$thu_tu."',name='".$name."',cost='".$cost."',status='".$status."',details='". $details."',NXS='".$NXS."',HSD='".$HSD."',Supply='".$Supply."',type='".$type."',category='".$category."' WHERE  id='". $id_list."' ";
+        mysqli_query($mysqli, $sql);
+    }
 ?>

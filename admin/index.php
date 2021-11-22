@@ -35,7 +35,7 @@
             }
     </style> 
     <div class="menu">
-        <a href="../index.php">Main menu</a>
+        <a href="../index.php?page=main_menu&cate=all">Main menu</a>
         <a href="list.php">Kho hàng</a>
         <a href="quan_li_don_hang.php">Nhân viên và nhà bếp</a>
         <a href="data_history.php">Lịch sử giao dịch</a>

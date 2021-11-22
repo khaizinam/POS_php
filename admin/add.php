@@ -1,27 +1,4 @@
-    <?php
-     include('../config/config.php');
-     if(isset($_POST['add']) && $_POST['add'] == 'add'){ 
-         //get 
-        $id_opt = '';
-        $thu_tu_opt = $_POST['thu_tu'];
-        $name_opt = $_POST['name'];
-        $img_opt =  $_FILES['img']['name'];
-        $img_opt_tmp =  $_FILES['img']['tmp_name'];
-        $cost_opt = $_POST['cost'];
-        $status_opt = $_POST['status'];
-        $details_opt = $_POST['details'];
-        $HSD_opt = $_POST['HSD'];
-        $NXS_opt = $_POST['NXS'];
-        $Supply_opt = $_POST['Supply'];
-        $type_opt = $_POST['type'];
-        $category_opt = $_POST['category'];
-        //call sql
-        $add_002 = "INSERT INTO item_1(id,thu_tu,name,img,cost,status,details,HSD,NXS,Supply,type,category) VALUES ('".$id_opt."', '".$thu_tu_opt."', '".$name_opt."', '".$img_opt."', '".$cost_opt."', '".$status_opt."', '".$details_opt."', '".$HSD_opt."', '".$NXS_opt."', '".$Supply_opt."', '".$type_opt."', '".$category_opt."');" ;
-         mysqli_query($mysqli, $add_002);
-         move_uploaded_file($img_opt_tmp,'../assets/img/'.$img_opt);
-         echo 'Thông báo: bạn đã thêm: '.$name_opt.' với ID: '.$id_opt.' thành công!';
-    }; 
-    ?> 
+    
 <style>
     table{
         border-collapse:collapse;
@@ -72,6 +49,34 @@
         <a href="list.php">Danh sách các hàng hóa</a>
     </div>
     <h3>Thêm hàng hóa</h3>
+    <?php
+     include('../config/config.php');
+     if(isset($_POST['add']) && $_POST['add'] == 'Thêm'){ 
+         //get 
+        $id_opt = '';
+        $thu_tu_opt = $_POST['thu_tu'];
+        $name_opt = $_POST['name'];
+        $img_opt =  $_FILES['img']['name'];
+        $img_opt_tmp =  $_FILES['img']['tmp_name'];
+        $cost_opt = $_POST['cost'];
+        $status_opt = $_POST['status'];
+        $details_opt = $_POST['details'];
+        $HSD_opt = $_POST['HSD'];
+        $NXS_opt = $_POST['NXS'];
+        $Supply_opt = $_POST['Supply'];
+        $type_opt = $_POST['type'];
+        $category_opt = $_POST['category'];
+        //call sql
+        $add_002 = "INSERT INTO item_1(id,thu_tu,name,img,cost,status,details,HSD,NXS,Supply,type,category) VALUES ('".$id_opt."', '".$thu_tu_opt."', '".$name_opt."', '".$img_opt."', '".$cost_opt."', '".$status_opt."', '".$details_opt."', '".$HSD_opt."', '".$NXS_opt."', '".$Supply_opt."', '".$type_opt."', '".$category_opt."');" ;
+         mysqli_query($mysqli, $add_002);
+         move_uploaded_file($img_opt_tmp,'../assets/img/'.$img_opt);
+         $_SESSION['add']=true;
+         $_SESSION['add_name']=$name_opt;
+    }; 
+    if(isset($_SESSION['add']) && $_SESSION['add']==true){
+        echo 'Ban da cap nhat thanh cong don hang '.$_SESSION['add_name'];
+    }
+    ?> 
     <hr>
     <div class="main-body">
         <form action="add.php" method="POST" enctype="multipart/form-data">

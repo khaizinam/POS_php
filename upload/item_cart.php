@@ -1,9 +1,9 @@
 <?php
         $total =0;
         $id_gio_hang='none';
-        $cart_001 = "SELECT * FROM my_cart WHERE pay='0' AND id_user='1' ORDER BY id_item ASC" ;
+        $cart_001 = "SELECT * FROM my_cart WHERE pay='0' AND id_user='".$live_user_id."' ORDER BY id_item ASC" ;
         $query_001 = mysqli_query($mysqli, $cart_001);
-        $sql_cart_check = "SELECT * FROM my_cart WHERE pay='0' AND id_user='1'" ;
+        $sql_cart_check = "SELECT * FROM my_cart WHERE pay='0' AND id_user='".$live_user_id."'" ;
         $query_cart_check = mysqli_query($mysqli, $sql_cart_check);
         $check_cart= mysqli_num_rows( $query_cart_check);
         if(isset($_GET['payment']) && $_GET['payment']== 'pay'){
@@ -27,7 +27,7 @@
             </tr>   
             <?php while($cart_0011 = mysqli_fetch_array($query_001)){?>
                 <tr>
-                    <td> <img src="../assets/img/<?php echo $cart_0011['img']; ?>" width="80px" alt=""></td>
+                    <td> <img src="assets/img/<?php echo $cart_0011['img']; ?>" width="80px" alt=""></td>
                     <td> <?php echo $cart_0011['name']; ?></td>      
                     <td> <?php echo number_format($cart_0011['cost']);?></td>
                     <td> <?php echo $cart_0011['amount'];?></td>
@@ -41,7 +41,7 @@
                 } ?>
                 <tr>
                     <td>Bàn số : 25D</td>
-                    <td>ClarkKenz</td>      
+                    <td><?php echo $live_user_name;?></td>      
                     <td style="background-color:skyblue">Tổng giá</td>
                     <td style="background-color:skyblue"><?php echo number_format($total)?> vnd </td>
                     <td>ID giỏ hàng </td>

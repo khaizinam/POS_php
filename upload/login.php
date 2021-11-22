@@ -1,24 +1,4 @@
 
-<?php
-    session_start();
-    include('../config/config.php');
-    if(isset($_POST['login'])){
-        $tai_khoan = $_POST['username'];
-        $pass = $_POST['pass'];
-        $sql = "SELECT * FROM username WHERE username='".$tai_khoan."' AND password='".$pass."' LIMIT 1";
-        $row = mysqli_query($mysqli, $sql);
-        $acc_001 = mysqli_fetch_array($row);
-        $count = mysqli_num_rows($row);
-        if($count>0){
-            $_SESSION['login'] = $acc_001['name'];
-            header("location:../index.php");
-        }else {
-            $message = "wrong password/ username";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            header("location:wrong.php");
-        }
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +15,30 @@
 <body>
 <div class="sign-wrapper">
     <div id="wrapper-login">
+<?php
+    session_start();
+    include('../config/config.php');
+    include('../classes/func.php');
+    if(isset($_POST['login'])){
+        $tai_khoan = $_POST['username'];
+        $pass = $_POST['pass'];
+        $sql = "SELECT * FROM username WHERE username='".$tai_khoan."' AND password='".$pass."' LIMIT 1";
+        $row = mysqli_query($mysqli, $sql);
+        $acc_001 = mysqli_fetch_array($row);
+        $count = mysqli_num_rows($row);
+        if($count>0){
+            $userID=$acc_001['id'];
+            $userName=$acc_001['name'];
+            session_set('user_id', $userID);
+            session_set('user_name', $userName);
+            session_set('login', true);
+            header("location:../index.php?page=main_menu");
+        }else {
+            $message = "wrong password/ username";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        }
+    }
+?>
         <form action="login.php" method="POST">
             <span>Acount</span><br>
             <input type="text" id="username" required name="username"><br>

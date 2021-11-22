@@ -1,5 +1,6 @@
 <?php
     include('../config/config.php');  
+    include('../classes/func.php');  
         $id_list = $_GET['id_list'];
         $sql_list = "SELECT * FROM item_1 WHERE id='". $id_list."' " ;
         $query_list_update = mysqli_query($mysqli, $sql_list);
@@ -17,8 +18,7 @@
         $Supply_up = $_POST['Supply'];
         $type_up = $_POST['type'];
         $category_up = $_POST['category'];
-        $sql_update = "UPDATE item_1 SET id='".$id_up."', thu_tu='".$thu_tu_up."',name='".$name_up."',cost='".$cost_up."',status='".$status_up."',details='". $details_up."',NXS='".$NXS_up."',HSD='".$HSD_up."',Supply='".$Supply_up."',type='".$type_up."',category='".$category_up."' WHERE  id='". $id_list."' ";
-         mysqli_query($mysqli, $sql_update);
+        add_item($mysqli, $id_up,$thu_tu_up,$name_up,$cost_up,$status_up,$details_up,$HSD_up, $NXS_up,$Supply_up,$type_up,$category_up,$id_list );
         header('location:list.php');
     };
 ?>

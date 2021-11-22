@@ -1,9 +1,9 @@
 <?php 
     if(isset($_GET['action']) && $_GET['action'] == 'signout'){
-        unset($_SESSION['login']);
+        unset($_SESSION['user_name']);
         header('location:upload/login.php');
     }
-    if(!isset( $_SESSION['category'])&& $_SESSION['category']!=''){
+    if(!isset($_SESSION['category'])|| $_SESSION['category']==''){
         $_SESSION['category']='all';
     }
     $id_item_show =0;
@@ -28,16 +28,16 @@
                     <div class="box login-body">
                         <ul class="log-in-out d-flex">
                              <li> 
-                                <button id="btn-user"><img src="assets/img/rem.png" width="40px" alt=""></i> <?php echo $_SESSION['login'] ;?></button>
+                                <button id="btn-user"><img src="assets/img/rem.png" width="40px" alt=""></i> <?php echo $_SESSION['user_name'] ;?></button>
                                 <div id="user-Dropdown" class="user-dropdown-content">
                                  <a href="#">My Account</a>
                                  <a href="admin/index.php">Quản lí</a>
-                                 <a href="cart/index.php">My Cart</a>
+                                 <a href="index.php?page=cart">My Cart</a>
                                  <a href="index.php?action=signout"><i class="fas fa-sign-out-alt"></i>Sign out</a>
                                </div>
                              </li>
                              <li> 
-                                <a href="cart/index.php?status_cart=cart" id="to-cart"><i class="fa fa-shopping-basket" ></i> My Cart</a>
+                                <a href="index.php?page=cart" id="to-cart"><i class="fa fa-shopping-basket" ></i> My Cart</a>
                              </li>
                         </ul>
                         <script src="assets/js/cart.js"></script>

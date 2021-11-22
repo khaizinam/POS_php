@@ -1,8 +1,8 @@
 <?php
-         $sql_status_check = "SELECT * FROM my_cart WHERE pay='1' AND id_user='1'" ;
+         $sql_status_check = "SELECT * FROM my_cart WHERE pay='1' AND id_user='".$live_user_id."'" ;
          $query_status_check = mysqli_query($mysqli, $sql_status_check);
          $check_status= mysqli_num_rows( $query_status_check);   
-        $sql_status="SELECT * FROM my_cart WHERE id_user='1' AND pay='1'";
+        $sql_status="SELECT * FROM my_cart WHERE id_user='".$live_user_id."' AND pay='1'";
         $query_status = mysqli_query($mysqli,$sql_status);    
  ?>
 <p class="logo-cart"><i class="fas fa-shopping-cart"></i> Món ăn đang được chuẩn bị</p>
@@ -18,7 +18,7 @@
               </tr>
             <?php while($status_rows = mysqli_fetch_array($query_status)){ ?>
                 <tr>     
-                    <td><img src="../assets/img/<?php echo $status_rows['img']; ?>" width="80px" alt=""></td>
+                    <td><img src="assets/img/<?php echo $status_rows['img']; ?>" width="80px" alt=""></td>
                     <td><?php echo $status_rows['name'];?></td>
                     <td><?php echo $status_rows['amount'];?></td>
                     <td><?php echo $status_rows['status'];?></td>

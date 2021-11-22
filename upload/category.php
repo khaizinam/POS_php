@@ -2,8 +2,6 @@
 <?php
 
 //goi category hien thi san phamr trong main menu
-   
-   
     if(isset($_GET['show_item']) && $_GET['show_item']==1){
         $id_item_show = $_GET['id_sp'];
         $item_info = "SELECT * FROM item_1 WHERE id= '".$id_item_show."' LIMIT 1" ;
