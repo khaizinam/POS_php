@@ -24,7 +24,7 @@
                                     <a target="_blank" href="https://www.youtube.com/watch?v=chY9p-XLHHk"><i class="fab fa-youtube"></i></a>
                                 </li>
                                 <li>
-                                    <a target="_blank" href="https://github.com/khaizinam/POS"><i class="fab fa-github"></i></i></a>
+                                    <a target="_blank" href="https://github.com/khaizinam/POS_php"><i class="fab fa-github"></i></i></a>
                                 </li>
                             </ul>
                         </div>
