@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2021 at 05:03 AM
+-- Generation Time: Nov 25, 2021 at 03:14 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.30
 
@@ -48,9 +48,9 @@ CREATE TABLE `item_1` (
 
 INSERT INTO `item_1` (`id`, `thu_tu`, `name`, `img`, `cost`, `status`, `details`, `HSD`, `NXS`, `Supply`, `type`, `category`) VALUES
 (4, 3, 'Coffee', 'coffee.jpg', 23000, 'active', '', '2021-11-09', '2021-11-10', 'Nhà NEST', 'drink', 'main_food'),
-(125, 50, 'Palova cake', 'banh-pavlova.jpg', 33000, 'active', '', '0000-00-00', '0000-00-00', '', 'cake', 'main_food'),
+(125, 50, 'Palova cake', 'banh-pavlova.jpg', 34000, 'active', '', '0000-00-00', '0000-00-00', '', 'cake', 'main_food'),
 (126, 20, 'Cheese Hot dog', 'hot dog phô mai.png', 17000, 'active', '', '0000-00-00', '0000-00-00', '', 'KFC', 'main_food'),
-(127, 45, 'Apple Cake', 'banh-tao.jpg', 22000, 'active', '', '0000-00-00', '0000-00-00', '', 'cake', 'main_food'),
+(127, 45, 'Apple Cake', 'banh-tao.jpg', 40000, 'active', '', '0000-00-00', '0000-00-00', '', 'cake', 'cake'),
 (130, 78, 'Tiramisu', 'banh-tiramisu.jpg', 23000, 'active', '', '0000-00-00', '0000-00-00', '', 'cake', 'main_food'),
 (134, 0, 'Cơm tấm', 'Cơm tấm.jpg', 37000, 'active', '', '0000-00-00', '0000-00-00', '', 'main_food', 'main_food'),
 (135, 0, 'Phở bò tái', 'Phở bò tái.jpg', 35000, 'active', '', '0000-00-00', '0000-00-00', '', 'main_food', 'main_food'),
@@ -148,8 +148,18 @@ INSERT INTO `my_cart` (`id_item`, `name`, `img`, `cost`, `amount`, `id_cart`, `i
 (168, 'Nước ép cà rốt', 'nuoc_ep_ca_rot.jpg', 49000, 2, 24, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 24),
 (139, 'Mochi Matcha', 'banh-mochi-matcha.jpg', 13000, 2, 26, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 25),
 (137, 'Donut', 'banh-Donut.jpg', 16000, 2, 26, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 26),
-(125, 'Palova cake', 'banh-pavlova.jpg', 33000, 2, 27, 1, 'Clak kenz', 'Đang nấu', 1, '25', 27),
-(138, 'Macaron', 'banh-macaron.jpg', 14000, 2, 28, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 28);
+(125, 'Palova cake', 'banh-pavlova.jpg', 33000, 2, 27, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 27),
+(138, 'Macaron', 'banh-macaron.jpg', 14000, 2, 28, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 28),
+(125, 'Palova cake', 'banh-pavlova.jpg', 33000, 1, 29, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 29),
+(127, 'Apple Cake', 'banh-tao.jpg', 22000, 2, 29, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 30),
+(153, 'Coca Cola', 'coca.jpg', 18000, 2, 29, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 31),
+(157, 'Bánh su kem', 'banh-su-kem-phủ-socola-recipe-main-photo.jpg', 12000, 3, 30, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 32),
+(130, 'Tiramisu', 'banh-tiramisu.jpg', 23000, 2, 31, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 33),
+(157, 'Bánh su kem', 'banh-su-kem-phủ-socola-recipe-main-photo.jpg', 12000, 5, 32, 1, 'Clak kenz', 'Hoàn thành', 2, '25', 34),
+(137, 'Donut', 'banh-Donut.jpg', 16000, 2, 33, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 35),
+(139, 'Mochi Matcha', 'banh-mochi-matcha.jpg', 13000, 3, 33, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 36),
+(125, 'Palova cake', 'banh-pavlova.jpg', 33000, 6, 33, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 37),
+(155, '7 up', '7-up-lon-cao-330ml.jpg', 18000, 4, 33, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 38);
 
 -- --------------------------------------------------------
 
@@ -188,8 +198,15 @@ INSERT INTO `tbl_gio_hang` (`id_cart`, `id_user`, `status`, `date`, `time`) VALU
 (24, 1, 'done', '0000-00-00', 'November 17, 2021 03:05:55 PM'),
 (25, 1, 'done', '0000-00-00', 'November 17, 2021 03:09:21 PM'),
 (26, 1, 'done', '0000-00-00', 'November 19, 2021 03:43:25 AM'),
-(27, 1, 'pay', '0000-00-00', 'November 19, 2021 03:46:38 AM'),
-(28, 1, 'done', '0000-00-00', 'November 19, 2021 03:47:27 AM');
+(27, 1, 'done', '0000-00-00', 'November 19, 2021 03:46:38 AM'),
+(28, 1, 'done', '0000-00-00', 'November 19, 2021 03:47:27 AM'),
+(29, 1, 'done', '0000-00-00', 'November 20, 2021 02:12:37 PM'),
+(30, 1, 'done', '0000-00-00', 'November 21, 2021 05:05:27 AM'),
+(31, 1, 'done', '0000-00-00', 'November 21, 2021 09:11:08 AM'),
+(32, 1, 'done', '0000-00-00', 'November 21, 2021 09:41:19 AM'),
+(33, 1, 'done', '0000-00-00', 'November 21, 2021 09:51:07 AM'),
+(34, 2, 'not', '0000-00-00', 'November 21, 2021 10:15:58 AM'),
+(35, 1, 'not', '0000-00-00', 'November 21, 2021 05:15:00 PM');
 
 -- --------------------------------------------------------
 
@@ -253,19 +270,19 @@ ALTER TABLE `username`
 -- AUTO_INCREMENT for table `item_1`
 --
 ALTER TABLE `item_1`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- AUTO_INCREMENT for table `my_cart`
 --
 ALTER TABLE `my_cart`
-  MODIFY `code` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `code` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `tbl_gio_hang`
 --
 ALTER TABLE `tbl_gio_hang`
-  MODIFY `id_cart` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_cart` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `username`
