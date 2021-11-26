@@ -1,12 +1,16 @@
 <?php
-    include('../config/config.php');  
-    include('../classes/func.php');  
+      include('../config/config.php');
+      include('../config/format.php');
+      include('../classes/session.php');
+      include('../classes/class.php');
+      //call class 
+    $manage = new manage();
         $id_list = $_GET['id_list'];
         $sql_list = "SELECT * FROM item_1 WHERE id='". $id_list."' " ;
-        $query_list_update = mysqli_query($mysqli, $sql_list);
-        $list_rows = mysqli_fetch_array( $query_list_update);
+        $query_list_update = $manage->get_req($sql_list);
+        $list_rows = $query_list_update->fetch_assoc();
     //them hang hoa
-    if(isset($_POST['update']) && $_POST['update'] == 'submit'){  
+    if($_SERVER['REQUEST_METHOD']=='POST'){  
         $id_up = $_POST['id'];
         $thu_tu_up = $_POST['thu_tu'];
         $name_up = $_POST['name'];
@@ -18,7 +22,7 @@
         $Supply_up = $_POST['Supply'];
         $type_up = $_POST['type'];
         $category_up = $_POST['category'];
-        add_item($mysqli, $id_up,$thu_tu_up,$name_up,$cost_up,$status_up,$details_up,$HSD_up, $NXS_up,$Supply_up,$type_up,$category_up,$id_list );
+        $manage->add_item($id_up,$thu_tu_up,$name_up,$cost_up,$status_up,$details_up,$HSD_up, $NXS_up,$Supply_up,$type_up,$category_up,$id_list );
         header('location:list.php');
     };
 ?>

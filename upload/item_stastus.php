@@ -1,9 +1,6 @@
 <?php
-         $sql_status_check = "SELECT * FROM my_cart WHERE pay='1' AND id_user='".$live_user_id."'" ;
-         $query_status_check = mysqli_query($mysqli, $sql_status_check);
-         $check_status= mysqli_num_rows( $query_status_check);   
-        $sql_status="SELECT * FROM my_cart WHERE id_user='".$live_user_id."' AND pay='1'";
-        $query_status = mysqli_query($mysqli,$sql_status);    
+        $check_status= $cart->status_check_select();   
+        $query_status = $cart->status_select(); 
  ?>
 <p class="logo-cart"><i class="fas fa-shopping-cart"></i> Món ăn đang được chuẩn bị</p>
         <a class="menu-cart" href="index.php?cart_status=cart">Giỏ hàng</a>

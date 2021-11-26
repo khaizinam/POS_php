@@ -1,4 +1,4 @@
-
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,39 +16,39 @@
 <div class="sign-wrapper">
     <div id="wrapper-login">
 <?php
-    session_start();
-    include('../config/config.php');
-    include('../classes/func.php');
-    if(isset($_POST['login'])){
-        $tai_khoan = $_POST['username'];
-        $pass = $_POST['pass'];
-        $sql = "SELECT * FROM username WHERE username='".$tai_khoan."' AND password='".$pass."' LIMIT 1";
-        $row = mysqli_query($mysqli, $sql);
-        $acc_001 = mysqli_fetch_array($row);
-        $count = mysqli_num_rows($row);
-        if($count>0){
-            $userID=$acc_001['id'];
-            $userName=$acc_001['name'];
-            session_set('user_id', $userID);
-            session_set('user_name', $userName);
-            session_set('login', true);
-            header("location:../index.php?page=main_menu");
-        }else {
-            $message = "wrong password/ username";
-            echo "<script type='text/javascript'>alert('$message');</script>";
+        session_start();
+        //file call
+        include('../config/format.php'); 
+        include('../config/config.php'); 
+        include('../classes/session.php');
+        include('../classes/class.php'); 
+        //work
+        $user = new userLogin();
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $userName = $_POST['userName'];
+            $userPass = $_POST['userPass'];
+            $login_check = $user->login($userName , $userPass );
         }
-    }
+        if(Session::get('userLogin') == true){
+            header('location:../index.php');
+        }
+        
 ?>
         <form action="login.php" method="POST">
             <span>Acount</span><br>
-            <input type="text" id="username" required name="username"><br>
+            <?php
+                if(isset($login_check)){
+                    echo $login_check;
+                }
+            ?>
+            <input type="text" id="username" required name="userName"><br>
             <span>Pass word</span><br>
-            <input type="password" id="pass" required name="pass"><br>
+            <input type="password" id="pass" required name="userPass"><br>
             <input type="submit" name="login" id="submit-login" value="Log in"><br>
             <a href="signup.php" id="sign-up">Sign up</a>
-        </form>                            
+        </form>  
+                       
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </div>
 </body>
 </html>

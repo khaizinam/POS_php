@@ -44,10 +44,14 @@
         <hr>
 
 <?php
-        include('../config/config.php');
-        include('../classes/func.php');
-        $query_id_gio_hang =query_id_don_hang($mysqli);
-        session_start();
+          include('../config/config.php');
+          include('../config/format.php');
+          include('../classes/session.php');
+          include('../classes/class.php');
+          //call class 
+        $manage = new manage();
+        $sql ="SELECT * FROM tbl_gio_hang WHERE NOT status='done' AND status!='not' ORDER BY id_cart DESC";
+        $query_id_gio_hang = $manage->get_req($sql);
         if(isset($_GET['id_cart'])){
             $id_cart_get=$_GET['id_cart'];
         }else{
@@ -59,10 +63,10 @@
         }
      //if(isset($_SESSION['id_cart'])&& $_SESSION['id_cart']!=''){
         elseif(isset($_GET['action_cart'])&& $_GET['action_cart']=='edit'){                  
-                    update_1($mysqli);
-                    $query_don_hang_update = query_don_hang($mysqli,$id_cart_get);
+                    $manage->update_1();
+                    $query_don_hang_update = $manage->query_don_hang($id_cart_get);
                     //number of row
-                    $query_row = query_don_hang($mysqli,$id_cart_get);
+                    $query_row = $manage->query_don_hang($id_cart_get);
                     $num_row=mysqli_num_rows($query_row);
                     
                     $i=1;
@@ -80,7 +84,7 @@
                     <td style="width:120px">Trạng thái</td>               
                     <td style="width:150px"></td>
                 </tr>
-                <?php while($row_don_hang_update = mysqli_fetch_array($query_don_hang_update)){?>
+                <?php while($row_don_hang_update = $query_don_hang_update->fetch_assoc()){?>
                 <tr>
                     <td><?php echo $i;?></td>
                     <td><?php echo $row_don_hang_update['so_ban'];?></td>
@@ -108,16 +112,15 @@
             ///////////////////////////////////////////
             $id_cart_done=$_GET['id_cart'];
             echo $id_cart_done;
-            update_don_hang_done($mysqli,$id_cart_done);
+            $manage->update_don_hang_done($id_cart_done);
             header('location:quan_li_don_hang.php');
-           
         }
         ?>
 <!-- in danh sách các đơn hang -->
 <div class="main-body">
 <?php while($row_don_hang_1 = mysqli_fetch_array($query_id_gio_hang)){
             $id_cart_in=$row_don_hang_1['id_cart'];
-            $query_don_hang = query_don_hang($mysqli,$id_cart_in);
+            $query_don_hang = $manage->query_don_hang($id_cart_in);
             ?>
 
                     <p>ID giỏ hàng: <?php echo $row_don_hang_1['id_cart'];?></p>

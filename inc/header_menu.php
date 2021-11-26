@@ -1,17 +1,16 @@
 <?php 
     if(isset($_GET['action']) && $_GET['action'] == 'signout'){
-        unset($_SESSION['user_name']);
-        header('location:upload/login.php');
+        Session::destroy();
     }
     if(!isset($_SESSION['category'])|| $_SESSION['category']==''){
-        $_SESSION['category']='all';
+        Session::set('category','all');
     }
     $id_item_show =0;
     if(isset($_GET['cate'])&&$_GET['cate']!=''){
         $_SESSION['category'] = $_GET['cate']; 
     }
-   $get_type=$_SESSION['category'];
-   $query_pro =  category($mysqli,$get_type);
+   $get_type= Session::get('category');
+   $query_pro =  $category->call_cat($get_type);
 ?>
 <div id="header" >
             <div class="wr-header">
@@ -28,7 +27,7 @@
                     <div class="box login-body">
                         <ul class="log-in-out d-flex">
                              <li> 
-                                <button id="btn-user"><img src="assets/img/rem.png" width="40px" alt=""></i> <?php echo $_SESSION['user_name'] ;?></button>
+                                <button id="btn-user"><img src="assets/img/rem.png" width="40px" alt=""><?php echo Session::get('fullName')?></i></button>
                                 <div id="user-Dropdown" class="user-dropdown-content">
                                  <a href="#">My Account</a>
                                  <a href="admin/index.php">Quản lí</a>

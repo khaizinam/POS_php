@@ -1,28 +1,21 @@
-
 <?php
-
-//goi category hien thi san phamr trong main menu
-    if(isset($_GET['show_item']) && $_GET['show_item']==1){
+if(isset($_GET['show_item']) && $_GET['show_item']==1){
         $id_item_show = $_GET['id_sp'];
-        $item_info = "SELECT * FROM item_1 WHERE id= '".$id_item_show."' LIMIT 1" ;
-        $query_item = mysqli_query($mysqli, $item_info);
-        $item_show = mysqli_fetch_array($query_item);
+        $query_item = $category->show($id_item_show);
+        $item_show = $query_item->fetch_assoc();
         include('upload/add_to_cart.php');
     }elseif(isset($_GET['show_item']) && $_GET['show_item']==0)
     {
         $id_item_show = 0;
         $item_info = "" ;
         $query_item = "";
-    }  
-?>
+    } 
+    ?>
 <div class="wrapper">
-    <!-- <div class="feature-thumb">
-        <img src="assets/img/post_5.jpg" alt="">
-    </div> -->
     <div class="products"> 
         <ul>
 <?php
-    while($row_pro = mysqli_fetch_array($query_pro)){
+    while($row_pro = $query_pro->fetch_assoc()){
         ?>
             <li class="main-product">
                         <div class="img-product">
@@ -44,7 +37,4 @@
 ?>
         </ul>
     </div>
-    <!-- <div class="footer-thumb">
-        <img src="assets/img/post_6.jpg" alt="">
-    </div> -->
 </div>   

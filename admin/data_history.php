@@ -43,17 +43,21 @@
                 </div>
                 <hr>
 <?php
-        include('../config/config.php');
-        include('../classes/func.php');
+       include('../config/config.php');
+       include('../config/format.php');
+       include('../classes/session.php');
+       include('../classes/class.php');
+       //call class 
+       $manage = new manage();
         if(isset($_GET['id_cart'])){
             $id_cart_get=$_GET['id_cart'];
         }else{
             $id_cart_get='';
         };
-        $query_id_gio_hang =query_id_don_hang_done($mysqli);    
+        $query_id_gio_hang = $manage->list_history();    
         if(isset($_GET['detail'])&& $_GET['detail']=='show'){  
 
-                    $query_don_hang_update = query_historty($mysqli,$id_cart_get);
+                    $query_don_hang_update = $manage->select_history($id_cart_get);
                     //number of row
             ?>
              <button onclick="location.href='data_history.php?detail=close'">close</button>
@@ -65,7 +69,7 @@
                     <td style="width:120px">Tên người dùng</td>
                     <td style="width:120px">Trạng thái</td>               
                 </tr>
-                <?php while($row_don_hang_update = mysqli_fetch_array($query_don_hang_update)){?>
+                <?php while($row_don_hang_update = $query_don_hang_update->fetch_assoc()){?>
                 <tr>
                     <td><?php echo $row_don_hang_update['name'];?></td>
                     <td><?php echo $row_don_hang_update['amount'];?></td>
@@ -87,7 +91,7 @@
                                 <td style="width:60px">ID user</td>
                                 <td style="width:120px">Ngày tạo</td>     
                             </tr>
-                            <?php while($row_don_hang = mysqli_fetch_array($query_id_gio_hang)){?>
+                            <?php while($row_don_hang = $query_id_gio_hang->fetch_array()){?>
                             <tr>
                                     <td><?php echo $row_don_hang['id_cart'];?></td>  
                                     <td><a href="data_history.php?detail=show&id_cart=<?php echo $row_don_hang['id_cart'];?>">xem chi tiết</a></td>              

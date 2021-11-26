@@ -2,7 +2,7 @@
     if(isset($_GET['opt_cart']) && $_GET['opt_cart']== 'cancel'){
         $id_opt_cart = $_GET['id_cart_opt'];
         $id_item_cart = $_GET['id_item'];
-        delete_cart($mysqli,$id_item_cart,$id_opt_cart);
+        $cart->delete_cart($id_item_cart,$id_opt_cart);
 }
 ?>
 <body>

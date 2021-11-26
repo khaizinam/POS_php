@@ -1,8 +1,5 @@
 <?php
-    // include('classes/func.php');
-    // session_start();
-        $id_cart = get_id_cart($mysqli,$live_user_id);
-        
+    $id_cart = $cart->get_id_cart(Session::get('userID'));       
     if(isset($_POST['add'])){ 
         $name =$item_show['name']; 
         $img =$item_show['img']; 
@@ -11,7 +8,7 @@
         $status = 'Chờ xử lí';
         $pay='0';
         $so_ban='25';
-        add_to_cart($mysqli, $id_item_show, $name, $img, $cost, $amount, $id_cart, $live_user_id,  $live_user_name,$status,$pay,$so_ban);
+        $cart->add_to_cart($id_item_show, $name, $img, $cost, $amount, $id_cart, Session::get('userID'),  Session::get('fullName'),$status,$pay,$so_ban);
     };  
 ?>
 <div class="menu-001">  
@@ -32,7 +29,7 @@
         </div>
         <div class="ca-101">
             <p> Detail: <?php echo $item_show['details'] ; ?></p>
-            <p>Note: <?php if(isset($_POST['add'])){echo $live_user_name.'. Bạn đã thêm '.$_POST['amount'].' '.$item_show['name'].' vào giỏ hàng.';}?></p>
+            <p>Note: <?php if(isset($_POST['add'])){echo Session::get('fullName').'. Bạn đã thêm '.$_POST['amount'].' '.$item_show['name'].' vào giỏ hàng.';}?></p>
         </div>  
     </div>
 </div>

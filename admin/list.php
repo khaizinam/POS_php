@@ -32,21 +32,25 @@
 </style> 
 <?php
     include('../config/config.php');
+    include('../config/format.php');
+    include('../classes/session.php');
+    include('../classes/class.php');
+    //call class 
+    $manage = new manage();
     //gọi danh sach cac hang hoa da dang ki
-    $list_001 = "SELECT * FROM item_1 ORDER BY type ASC" ;
-    $query_list = mysqli_query($mysqli, $list_001);
+    $query_list = $manage->show_kho_hang();
     //xoa item
     if(isset($_GET['option_list']) && $_GET['option_list']== 'delete'){
             $id_list = $_GET['id_list'];
             $list_delt = "DELETE FROM item_1 WHERE id='".$id_list."' ";
-           mysqli_query($mysqli,$list_delt);
+           $manage->send_req($list_delt);
            header('location:list.php');
     //update item
     }else if(isset($_GET['option_list']) && $_GET['option_list']== 'update'){
         $id_list = $_GET['id_list'];
         $sql_list = "SELECT * FROM item_1 WHERE id='". $id_list."' " ;
-        $query_list_update = mysqli_query($mysqli, $sql_list);
-        $list_rows = mysqli_fetch_array( $query_list_update);
+        $query_list_update =  $manage->get_req($sql_list);
+        $list_rows = $query_list_update->fetch_assoc();
         header('location:update.php');
     }
 ?>  
@@ -73,7 +77,7 @@
                 <td style="width:400px" class="detals">Mô tả</td>
             </tr>
        <?php              
-        while($row_list = mysqli_fetch_array( $query_list)){
+        while($row_list = $query_list->fetch_assoc()){
         ?>           
             <tr>
                 <td><?php echo $row_list['id']; ?></td>
