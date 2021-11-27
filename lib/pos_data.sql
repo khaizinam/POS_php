@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2021 at 07:49 AM
+-- Generation Time: Nov 27, 2021 at 03:15 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.30
 
@@ -162,10 +162,13 @@ INSERT INTO `my_cart` (`id_item`, `name`, `img`, `cost`, `amount`, `id_cart`, `i
 (139, 'Mochi Matcha', 'banh-mochi-matcha.jpg', 13000, 3, 33, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 36),
 (125, 'Palova cake', 'banh-pavlova.jpg', 33000, 6, 33, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 37),
 (155, '7 up', '7-up-lon-cao-330ml.jpg', 18000, 4, 33, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 38),
-(125, 'Palova cake', 'banh-pavlova.jpg', 34000, 2, 35, 1, 'Clerk Kenz', 'Hoàn thành', 1, '25', 40),
-(161, 'Brown Sugar Bubble Milk Tea', 'Brown-sugar-bubble-milk-tea 1.jpg', 39000, 12, 36, 1, 'Clerk Kenz', 'Đang nấu', 1, '25', 42),
-(148, 'Cháo lòng', 'Cháo lòng.jpg', 26000, 2, 34, 2, 'Nezuko Demii', 'Chờ xử lí', 1, '25', 44),
-(127, 'Apple Cake', 'banh-tao.jpg', 40000, 3, 34, 2, 'Nezuko Demii', 'Chờ xử lí', 1, '25', 45);
+(125, 'Palova cake', 'banh-pavlova.jpg', 34000, 2, 35, 1, 'Clerk Kenz', 'Hoàn thành', 2, '25', 40),
+(161, 'Brown Sugar Bubble Milk Tea', 'Brown-sugar-bubble-milk-tea 1.jpg', 39000, 12, 36, 1, 'Clerk Kenz', 'Hoàn thành', 2, '25', 42),
+(148, 'Cháo lòng', 'Cháo lòng.jpg', 26000, 2, 34, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 44),
+(127, 'Apple Cake', 'banh-tao.jpg', 40000, 3, 34, 2, 'Nezuko Demii', 'Hoàn thành', 2, '25', 45),
+(127, 'Apple Cake', 'banh-tao.jpg', 40000, 5, 37, 1, 'Clerk Kenz', 'Chờ xử lí', 1, '25', 46),
+(4, 'Coffee', 'coffee.jpg', 23000, 2, 37, 1, 'Clerk Kenz', 'Chờ xử lí', 1, '25', 48),
+(127, 'Apple Cake', 'banh-tao.jpg', 40000, 2, 39, 1, 'Clerk Kenz', 'Chờ xử lí', 1, '25', 49);
 
 -- --------------------------------------------------------
 
@@ -211,9 +214,13 @@ INSERT INTO `tbl_gio_hang` (`id_cart`, `id_user`, `status`, `date`, `time`) VALU
 (31, 1, 'done', '0000-00-00', 'November 21, 2021 09:11:08 AM'),
 (32, 1, 'done', '0000-00-00', 'November 21, 2021 09:41:19 AM'),
 (33, 1, 'done', '0000-00-00', 'November 21, 2021 09:51:07 AM'),
-(34, 2, 'pay', '0000-00-00', 'November 21, 2021 10:15:58 AM'),
-(35, 1, 'pay', '0000-00-00', 'November 21, 2021 05:15:00 PM'),
-(36, 1, 'pay', '0000-00-00', 'November 25, 2021 03:55:03 AM');
+(34, 2, 'done', '0000-00-00', 'November 21, 2021 10:15:58 AM'),
+(35, 1, 'done', '0000-00-00', 'November 21, 2021 05:15:00 PM'),
+(36, 1, 'done', '0000-00-00', 'November 25, 2021 03:55:03 AM'),
+(37, 1, 'pay', '0000-00-00', 'November 26, 2021 08:53:05 AM'),
+(38, 0, 'not', '0000-00-00', 'November 26, 2021 12:15:49 PM'),
+(39, 1, 'pay', '0000-00-00', 'November 26, 2021 01:34:51 PM'),
+(40, 1, 'not', '0000-00-00', 'November 26, 2021 02:03:49 PM');
 
 -- --------------------------------------------------------
 
@@ -226,16 +233,22 @@ CREATE TABLE `username` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `phone_number` varchar(12) NOT NULL,
+  `role` varchar(50) NOT NULL,
+  `addres` varchar(600) NOT NULL,
+  `nation` varchar(500) NOT NULL,
+  `sex` varchar(30) NOT NULL,
+  `avatar` varchar(600) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `username`
 --
 
-INSERT INTO `username` (`id`, `username`, `password`, `name`, `email`) VALUES
-(1, 'admin', '123', 'Clerk Kenz', ''),
-(2, 'user1', '123', 'Nezuko Demii', '');
+INSERT INTO `username` (`id`, `username`, `password`, `name`, `email`, `phone_number`, `role`, `addres`, `nation`, `sex`, `avatar`) VALUES
+(1, 'admin', '123', 'Clerk Kenz', '', '', '', '', '', '', ''),
+(2, 'user1', '123', 'Nezuko Demii', '', '', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -283,19 +296,19 @@ ALTER TABLE `item_1`
 -- AUTO_INCREMENT for table `my_cart`
 --
 ALTER TABLE `my_cart`
-  MODIFY `code` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `code` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tbl_gio_hang`
 --
 ALTER TABLE `tbl_gio_hang`
-  MODIFY `id_cart` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_cart` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `username`
 --
 ALTER TABLE `username`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

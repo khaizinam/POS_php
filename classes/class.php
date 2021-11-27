@@ -70,6 +70,36 @@ class DataBase
                     }
                 }
             }
+            public function signup($userName , $userPass,$fullname ,$repassword, $email,  $phone_number)
+            {
+                $fullname = $this->fm->validation($fullname);
+                $userName = $this->fm->validation($userName);
+                $userPass = $this->fm->validation($userPass);
+                $repassword = $this->fm->validation($repassword);
+                $email = $this->fm->validation($email);
+                $phone_number = $this->fm->validation($phone_number);
+                /////////////////////////////////////////
+                $fullname = mysqli_real_escape_string($this->db->link, $fullname);
+                $userName = mysqli_real_escape_string($this->db->link, $userName);
+                $userPass = mysqli_real_escape_string($this->db->link, $userPass);
+                $repassword = mysqli_real_escape_string($this->db->link, $repassword);
+                $email = mysqli_real_escape_string($this->db->link, $email);
+                $phone_number = mysqli_real_escape_string($this->db->link, $phone_number);
+                if(empty($userName) ||empty($userPass) || empty($repassword) ){
+                    $alert= "User and Pass must be not emty";
+                    return $alert;
+                }else{
+                    if($userPass != $repassword){
+                        $alert= "repeat Password must be same password";
+                        return $alert;
+                    }else{
+                        $query = "INSERT INTO username(username, password, name, email, phone_number, role, addres, nation, sex, avatar) VALUES ('$userName','$userPass','$fullname','$email','$phone_number','4','none','none','none','none')";
+                        $this->db->send_req($query);
+                        $alert= "sucess to create new user";
+                        return $alert;
+                    }
+                }
+            }
       }   
       //CATEGORY
       class category
@@ -223,8 +253,6 @@ class DataBase
             $type_opt = $_POST['type'];
             $category_opt = $_POST['category'];
             //call sql
-
-
             $add_002 = "INSERT INTO item_1(id,thu_tu,name,img,cost,status,details,HSD,NXS,Supply,type,category) VALUES ('".$id_opt."', '".$thu_tu_opt."', '".$name_opt."', '".$img_opt."', '".$cost_opt."', '".$status_opt."', '".$details_opt."', '".$HSD_opt."', '".$NXS_opt."', '".$Supply_opt."', '".$type_opt."', '".$category_opt."');" ;
             $this->send_req($add_002);
             move_uploaded_file($img_opt_tmp,'../assets/img/'.$img_opt);

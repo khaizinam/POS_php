@@ -13,21 +13,51 @@
     <title>🍔POS: retaurant mini of my</title>
 </head>
 <body>
+<?php
+        session_start();
+        //file call
+        include('../config/format.php'); 
+        include('../config/config.php'); 
+        include('../classes/session.php');
+        include('../classes/class.php'); 
+        //work
+        $user = new userLogin();
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $fullname = $_POST['name'];
+            $userName = $_POST['userName'];
+            $userPass = $_POST['password'];
+            $repassword = $_POST['repassword'];
+            $email = $_POST['email'];
+            $phone_number = $_POST['phone_number'];
+            $login_check = $user->signup($userName , $userPass ,$fullname,$repassword, $email,  $phone_number);
+        }
+        if(Session::get('userLogin') == true){
+            header('location:../index.php');
+        }
+        
+?>
     <div class="sign-wrapper">
             <!-- End header -->
             <div id="wrapper-login">
-                <form>
+                <form action="signup.php" method="POST">
                     <span>Email</span><br>
-                    <input type="text"name = "email" placeholder="email" id="email"><br>
+                <?php
+                    if(isset($login_check)){
+                    echo $login_check;
+                }
+                ?>
+                    <input type="text"name = "email" placeholder="email"><br>
                     <span>Phone Number</span><br>
-                    <input type="text"name = "phone_number" placeholder="phone number" id="phone_number"><br>
+                    <input type="text"name = "phone_number" placeholder="phone number" ><br>
+                    <span>Tên hiển thị</span><br>
+                    <input type="text"name = "name" placeholder="full name" ><br>
                     <span>Tên đăng nhập</span><br>
-                    <input type="text"name = "username" placeholder="Tên login" id="username"><br>
+                    <input type="text" name = "userName" placeholder="Tên login" ><br>
                     <span>mật khẩu</span><br>
-                    <input type="password"name= "password" placeholder="Mật khẩu" id="password" ><br>
+                    <input type="password"name= "password" placeholder="Mật khẩu" ><br>
                     <span>Nhập lại mật khẩu</span><br>
-                    <input type="password"name= "repassword" placeholder="Nhập lại Mật khẩu" id="repassword" ><br>
-                    <button name="btn-sign-in">Sign up</button>
+                    <input type="password"name= "repassword" placeholder="Nhập lại Mật khẩu"  ><br>
+                    <input type="submit" name="signup" id="submit-login" value="Sign up"><br>
                     <a href="login.php" id="sign-up" >Sign in</a>     
                 </form>
                     
