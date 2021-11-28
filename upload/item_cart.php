@@ -2,7 +2,7 @@
         $total =0;
         $id_gio_hang='none';
         $cart_001 = $cart->cart_select();
-        $check_cart = $cart->cart_check_select();;
+        $check_cart = $cart->cart_check_select();
         if(isset($_GET['payment']) && $_GET['payment']== 'pay'){
             $id_cart_get = $_GET['id_cart'];
             $cart->thanh_toan( $id_cart_get);
